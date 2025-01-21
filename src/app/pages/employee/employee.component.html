@@ -78,11 +78,20 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="department" class="form-label">Department</label>
+                <label for="department" class="form-label">Parent Department</label>
+                <select id="deptId" class="form-select">
+                  <option selected>Select Department</option>
+                  @for(item of parentDeptList; track $index) {
+                    <option [value]="item.departmentId">{{item.departmentName}}</option>
+                  }  
+                </select>
+              </div>  
+              <div class="col-md-6">
+                <label for="department" class="form-label">Child Department</label>
                 <select id="deptId" class="form-select">
                   <option selected>Select Department</option>
                 </select>
-              </div>  
+              </div> 
             </div>
           </div>
           <div class="row">
