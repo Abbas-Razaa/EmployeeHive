@@ -1,15 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MasterService } from '../../services/master.service';
-import { IApiResponse, IParentDept } from '../../model/Employee';
+import { IApiResponse, IChildDept, IParentDept } from '../../model/Employee';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css',
 })
 export class EmployeeComponent implements OnInit {
   parentDeptList: IParentDept[] = [];
+  childDeptList: IChildDept[] = [];
+  deptId: number = 0;
 
   masterService = inject(MasterService);
 
@@ -22,4 +25,10 @@ export class EmployeeComponent implements OnInit {
       this.parentDeptList = res.data;
     });
   }
+
+  onDeptChange(){
+    this.masterService.getChildDeptByParentId(this.deptId).subscribe((res: IApiResponse) => {
+      this.childDeptList = res.data;
+    })
+  }  
 }
