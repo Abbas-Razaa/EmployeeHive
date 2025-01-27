@@ -25,6 +25,10 @@ export class EmployeeComponent implements OnInit {
     this.getEmployees();
   }
 
+  onEdit(obj:Employee): void {
+    this.employeeObj = obj;
+  };
+
   getEmployees() {
     this.empService.getEmployee().subscribe((res: Employee[]) => {
       this.employeeList = res;
@@ -48,7 +52,18 @@ export class EmployeeComponent implements OnInit {
     this.empService.createNewEmployee(this.employeeObj).subscribe((res: Employee)=>{
       debugger;
         alert("Employee Creation Success") 
+        this.getEmployees();
     }, error=>{
+      alert('Error From API')
+    })
+  }
+
+  onUpdateEmp(){
+    this.empService.updateEmployee(this.employeeObj).subscribe((res:Employee)=>{
+      debugger;
+      alert("Employee Updation Success")
+      this.getEmployees();
+    },error=>{
       alert('Error From API')
     })
   }
@@ -61,7 +76,7 @@ export class EmployeeComponent implements OnInit {
         alert("Employee deletion Success")
         this.getEmployees();
       },error=>{
-        alert('Error Form API')
+        alert('Error Form API') 
       })
     }
   }
