@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MasterService } from '../../services/master.service';
 import { Employee, IApiResponse, IChildDept, IParentDept } from '../../model/Employee';
 import { FormsModule } from '@angular/forms';
@@ -18,11 +18,22 @@ export class EmployeeComponent implements OnInit {
   employeeObj: Employee = new Employee();
   employeeList: Employee[] = [];
   masterService = inject(MasterService);
-  empService = inject(EmployeeService)
+  empService = inject(EmployeeService);
+
+  isSidePanelOpen = signal<boolean>(false);
+
  
   ngOnInit(): void {
     this.getParentDeptList();
     this.getEmployees();
+  }
+
+  addNew(){
+    this.isSidePanelOpen.set(true)
+  }
+
+  close(){
+    this.isSidePanelOpen.set(false)
   }
 
   onEdit(obj:Employee): void {
