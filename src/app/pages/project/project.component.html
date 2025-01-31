@@ -1,6 +1,6 @@
 <p>project works!</p>
 <div class="row" >
-  <div class="col-12">
+  <div class="col-12"  *ngIf="currentView === 'List' ">
     <div class="card">
       <div class="card-header">
         <div class="row">
@@ -8,9 +8,9 @@
             <strong>Project List</strong>
           </div>
           <div class="col-6 text-end">
-            <button class="btn btn-primary" >
-              close
-            </button>
+            <button class="btn btn-primary" (click)="currentView = 'Create'  " >
+             Create New Project
+            </button> 
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="col-7">
+  <div class="col-12" *ngIf="currentView !== 'List' ">
     <div class="card">
       <div class="card-header">
         <div class="row">
@@ -41,14 +41,13 @@
             <strong>New Project List</strong>
           </div>
           <div class="col-6 text-end">
-            <button class="btn btn-primary" >
+            <button class="btn btn-primary" (click)="currentView = 'List' " >
               close
             </button>
           </div>
         </div>
       </div>
       <div class="card-body">
-        !-- Project Form -->
                 <form class="mb-4">
                     <div class="row">
                         <div class="col-md-6">
