@@ -66,8 +66,11 @@
                         </div>
                         <div class="col-md-6">
                             <label for="leadByEmpId" class="form-label">Lead By Employee ID</label>
-                            <select name="" id="">
+                            <select class="form-select" formControlName="leadByEmpId">
                               <option value="">Select Employee</option>
+                              <option *ngFor="let emp of employeeData$ | async" [value]="emp.employeeId" >
+                                {{emp.employeeName}}
+                              </option>
                             </select>
                         </div>
                     </div>

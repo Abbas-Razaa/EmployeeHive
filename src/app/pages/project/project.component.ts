@@ -1,10 +1,14 @@
-import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MasterService } from '../../services/master.service';
+import { Observable } from 'rxjs';
+import { Employee } from '../../model/Employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-project',
-  imports: [NgIf,ReactiveFormsModule],
+  imports: [NgIf,ReactiveFormsModule,NgFor,AsyncPipe],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
@@ -12,8 +16,13 @@ export class ProjectComponent {
   currentView: string = "List";
   projectForm: FormGroup = new FormGroup({});
 
+  employeSrv = inject(EmployeeService);
+
+  employeeData$: Observable<Employee[]> = new Observable<Employee[]>();
+
   constructor(){
     this.initializeForm();
+    this.employeeData$ = this.employeSrv.getEmployee();
   }
 
   initializeForm(){
