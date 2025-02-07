@@ -28,4 +28,9 @@ export class EmployeeService {
       "https://projectapi.gerasim.in/api/EmployeeManagement/DeleteEmployee"+id
     )
   }
+  createNewProject(obj: Employee) {
+    return this.http.post<Employee>(
+      "https://projectapi.gerasim.in/api/EmployeeManagement/CreateEmployee"+obj
+    )
+  }
 }
