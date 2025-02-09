@@ -32,7 +32,7 @@ export class EmployeeService {
   }
   createNewProject(obj: Employee) {
     return this.http.post<Employee>(this.apiURL+
-      "CreateEmployee"+obj
+      "CreateProject",obj
     )
   }
 }
