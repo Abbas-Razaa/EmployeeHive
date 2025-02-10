@@ -35,4 +35,9 @@ export class EmployeeService {
       "CreateProject",obj
     )
   }
+  getProjects() {
+    return this.http.get<Employee[]>(
+      this.apiURL+"GetAllProjects"
+    )
+  }
 }
