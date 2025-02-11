@@ -36,4 +36,10 @@ export class ProjectComponent {
       emailId: new FormControl('')
     });
   }
+
+  onSaveProject(){
+    const formValue = this.projectForm.value;
+
+    this.employeSrv.createNewProject(formValue).subscribe((res:))
+  }
 }
