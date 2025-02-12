@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
 import { Observable } from 'rxjs';
-import { Employee } from '../../model/Employee';
+import { Employee, Project } from '../../model/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -39,7 +39,16 @@ export class ProjectComponent {
 
   onSaveProject(){
     const formValue = this.projectForm.value;
+    debugger;
 
-    this.employeSrv.createNewProject(formValue).subscribe((res:))
+    this.employeSrv.createNewProject(formValue).subscribe((res:Project)=>{
+      debugger;
+      alert("Project Created Successfully");
+
+    },error=>{
+      debugger;
+      alert("Error while creating project");
+
+    })
   }
 }
