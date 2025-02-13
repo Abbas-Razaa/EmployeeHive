@@ -17,12 +17,17 @@ export class ProjectComponent {
   projectForm: FormGroup = new FormGroup({});
 
   employeSrv = inject(EmployeeService);
+  projectList: Project[] = [];
 
   employeeData$: Observable<Employee[]> = new Observable<Employee[]>();
 
   constructor(){
     this.initializeForm();
     this.employeeData$ = this.employeSrv.getEmployee();
+  }
+
+  ngOnInit(): void {
+    this.getAllProjects();
   }
 
   initializeForm(){
@@ -49,6 +54,17 @@ export class ProjectComponent {
       debugger;
       alert("Error while creating project");
 
+    })
+  }
+
+  getAllProjects(){
+    this.employeSrv.getProjects().subscribe((res:Project[])=>{
+      debugger;
+      this.projectList = res;
+
+    },error=>{
+      debugger;
+      alert("Error while fetching projects");
     })
   }
 }
