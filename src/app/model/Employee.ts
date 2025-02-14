@@ -49,4 +49,5 @@ export interface Project {
   contactPerson: string;
   contactNo: string;
   emailId: string;
+  employeeName: string;
 }

@@ -27,7 +27,16 @@
             </tr>
           </thead>
           <tbody>
-
+            <tr *ngFor="let project of projectList; let sr=index" >
+              <td>
+                {{sr+1}}
+              </td>
+              <td>{{project.projectName}}</td>
+              <td>{{project.clientName}}</td>
+              <td>{{project.startDate}}</td>
+              <td>{{project.employeeName}}</td>
+              <td></td>
+            </tr>
           </tbody>  
         </table>
       </div>
