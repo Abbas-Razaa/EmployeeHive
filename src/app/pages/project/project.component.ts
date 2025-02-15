@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
@@ -8,7 +8,7 @@ import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-project',
-  imports: [NgIf,ReactiveFormsModule,NgFor,AsyncPipe],
+  imports: [NgIf,ReactiveFormsModule,NgFor,AsyncPipe,DatePipe],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
