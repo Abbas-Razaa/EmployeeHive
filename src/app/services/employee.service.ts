@@ -35,6 +35,9 @@ export class EmployeeService {
       "CreateProject",obj
     )
   }
+  updateProject(obj: Project){
+    return this.http.put<Project>(this.apiURL+"UpdateProject/"+obj.projectId,obj)
+  }
   getProjects() {
     return this.http.get<Project[]>(
       this.apiURL+"GetAllProjects"

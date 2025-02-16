@@ -30,31 +30,46 @@ export class ProjectComponent {
     this.getAllProjects();
   }
 
-  initializeForm(){
+  onEdit(projectData: Project){
+    this.initializeForm(projectData);
+  }
+
+  initializeForm(project?: Project){
     this.projectForm = new FormGroup({
-      projectId: new FormControl(0),
-      projectName: new FormControl(''),
-      clientName: new FormControl(''),
-      startDate: new FormControl(''),
-      leadByEmpId: new FormControl(''),
-      contactNo: new FormControl(''),
-      emailId: new FormControl('')
+      projectId: new FormControl(project ? project.projectId : 0),
+      projectName: new FormControl(project ? project.projectName : ''),
+      clientName: new FormControl(project ? project.clientName : ''),
+      startDate: new FormControl(project ? project.startDate : ''),
+      leadByEmpId: new FormControl(project ? project.leadByEmpId : 0),
+      contactNo: new FormControl(project ? project.contactNo : ''),
+      emailId: new FormControl(project ? project.emailId : ''),
     });
+    this.currentView = "Create";
   }
 
   onSaveProject(){
     const formValue = this.projectForm.value;
-    debugger;
+    if(formValue.projectId == 0){
 
-    this.employeSrv.createNewProject(formValue).subscribe((res:Project)=>{
-      debugger;
-      alert("Project Created Successfully");
+      this.employeSrv.createNewProject(formValue).subscribe((res:Project)=>{
+        debugger;
+        alert("Project Created Successfully");
+  
+      },error=>{
+        debugger;
+        alert("Error while creating project");
+  
+      })
 
-    },error=>{
-      debugger;
-      alert("Error while creating project");
+    } else {
+      this.employeSrv.updateProject(formValue).subscribe((res:Project)=>{
+        debugger;
+        alert('Project Updated Success')
+      },error=>{
 
-    })
+      })
+
+    }
   }
 
   getAllProjects(){
