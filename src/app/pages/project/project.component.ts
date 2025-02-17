@@ -30,6 +30,10 @@ export class ProjectComponent {
     this.getAllProjects();
   }
 
+  onAddEmployees(id: number){
+
+  }
+
   onEdit(projectData: Project){
     this.initializeForm(projectData);
   }
@@ -54,6 +58,7 @@ export class ProjectComponent {
       this.employeSrv.createNewProject(formValue).subscribe((res:Project)=>{
         debugger;
         alert("Project Created Successfully");
+        this.getAllProjects();
   
       },error=>{
         debugger;
@@ -65,6 +70,7 @@ export class ProjectComponent {
       this.employeSrv.updateProject(formValue).subscribe((res:Project)=>{
         debugger;
         alert('Project Updated Success')
+        this.getAllProjects();
       },error=>{
 
       })
