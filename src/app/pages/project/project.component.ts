@@ -30,7 +30,7 @@ export class ProjectComponent {
     this.getAllProjects();
   }
 
-  onAddEmployees(id: number){
+  onAddEmployees(id: number){ 
 
   }
 
