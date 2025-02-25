@@ -1,5 +1,5 @@
 import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
 import { Observable } from 'rxjs';
@@ -12,7 +12,8 @@ import { EmployeeService } from '../../services/employee.service';
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnInit{
+  @ViewChild('myModal') employeeModal: ElementRef | undefined;
   currentView: string = "List";
   projectForm: FormGroup = new FormGroup({});
 
@@ -31,7 +32,9 @@ export class ProjectComponent {
   }
 
   onAddEmployees(id: number){ 
-
+    if(this.employeeModal){
+      this.employeeModal.nativeElement.style.display = "block";
+    }
   }
 
   onEdit(projectData: Project){
