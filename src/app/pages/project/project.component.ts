@@ -37,6 +37,12 @@ export class ProjectComponent implements OnInit{
     }
   }
 
+  closeModal(){ 
+    if(this.employeeModal){
+      this.employeeModal.nativeElement.style.display = "none";
+    }
+  }
+
   onEdit(projectData: Project){
     this.initializeForm(projectData);
   }
