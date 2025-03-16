@@ -52,24 +52,20 @@ export interface Project {
   employeeName: string;
 }
 
-export class Project {
+export class ProjectEmployee {
+  empProjectId: number;
   projectId: number;
-  projectName: string;
-  clientName: string;
-  startDate: Date;
-  leadByEmpId: number;
-  contactPerson: string;
-  contactNo: string;
-  emailId: string;
+  empId: number;
+  assignedDate: string;
+  isActive: boolean;
+  role: string;
 
   constructor() {
+    this.assignedDate = "";
+    this.empId = 0;
+    this.empProjectId = 0;
+    this.isActive = true;
     this.projectId = 0;
-    this.projectName = '';
-    this.clientName = '';
-    this.startDate = new Date();
-    this.leadByEmpId = 0;
-    this.contactPerson = '';
-    this.contactNo = '';
-    this.emailId = '';
+    this.role = '';
   }
 }
