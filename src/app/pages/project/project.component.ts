@@ -1,14 +1,14 @@
 import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MasterService } from '../../services/master.service';
 import { Observable } from 'rxjs';
-import { Employee, Project } from '../../model/Employee';
+import { Employee, Project, ProjectEmployee } from '../../model/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-project',
-  imports: [NgIf,ReactiveFormsModule,NgFor,AsyncPipe,DatePipe],
+  imports: [NgIf,ReactiveFormsModule,NgFor,AsyncPipe,DatePipe,FormsModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
@@ -16,6 +16,7 @@ export class ProjectComponent implements OnInit{
   @ViewChild('myModal') employeeModal: ElementRef | undefined;
   currentView: string = "List";
   projectForm: FormGroup = new FormGroup({});
+  projectEmployee: ProjectEmployee = new ProjectEmployee();
 
   employeSrv = inject(EmployeeService);
   projectList: Project[] = [];
