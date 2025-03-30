@@ -151,6 +151,21 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>{(sr+1)}</td>
+                  <td>{{project.projectName}}</td>
+                  <td>{{project.clientName}}</td>
+                  <td>{{project.startDate | date: 'dd-MMMM-yy'}}</td>
+                  <td>{{project.employeeName}}</td>
+                  <td>
+                    <button class="btn btn-primary" (click)="onEdit(project)">
+                      Edit
+                    </button>
+                    <button class="btn btn-success mx-2" (click)="onAddEmployees(project.projectId)">
+                      Employees
+                    </button>
+                  </td>
+                </tr>
                 
               </tbody>
             </table>
@@ -160,6 +175,7 @@
 
         
       </div>
+      
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
