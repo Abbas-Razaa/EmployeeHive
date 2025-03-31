@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee, IApiResponse, Project } from '../model/Employee';
+import { Employee, IApiResponse, Project, ProjectEmployee } from '../model/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +43,10 @@ export class EmployeeService {
       this.apiURL+"GetAllProjects"
     )
   }
+
+  addNewProjectEmployee(obj: ProjectEmployee) {
+    return this.http.post<ProjectEmployee>(this.apiURL+"CreateProjectEmployee",obj)
+  }
+
+
 }
