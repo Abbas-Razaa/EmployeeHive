@@ -61,6 +61,16 @@ export class ProjectComponent implements OnInit{
     this.currentView = "Create";
   }
 
+  onAddEmp(){
+    this.employeSrv.addNewProjectEmployee(this.projectEmployee).subscribe((res:ProjectEmployee)=>{
+      debugger;
+      alert('Employee Added to Project');
+    }, errors=>{
+
+    })
+
+  }
+
   onSaveProject(){
     const formValue = this.projectForm.value;
     if(formValue.projectId == 0){
