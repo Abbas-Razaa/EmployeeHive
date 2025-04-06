@@ -32,7 +32,8 @@ export class ProjectComponent implements OnInit{
     this.getAllProjects();
   }
 
-  onAddEmployees(id: number){ 
+  onAddEmployees(id: number){
+    this.projectEmployee.projectId = id;
     if(this.employeeModal){
       this.employeeModal.nativeElement.style.display = "block";
     }
