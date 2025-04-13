@@ -20,6 +20,7 @@ export class ProjectComponent implements OnInit{
 
   employeSrv = inject(EmployeeService);
   projectList: Project[] = [];
+  projectEmployeeList: ProjectEmployee[] = [];
 
   employeeData$: Observable<Employee[]> = new Observable<Employee[]>();
 
@@ -33,6 +34,7 @@ export class ProjectComponent implements OnInit{
   }
 
   onAddEmployees(id: number){
+    this.getAllProjectEmployee(id);
     this.projectEmployee.projectId = id;
     if(this.employeeModal){
       this.employeeModal.nativeElement.style.display = "block";
@@ -97,6 +99,17 @@ export class ProjectComponent implements OnInit{
       })
 
     }
+  }
+
+  getAllProjectEmployee(id: number){
+    this.employeSrv.GetProjectEmployee().subscribe((res:ProjectEmployee[])=>{
+      debugger;
+      const record = res.filter(m=> m.projectId == id);
+      this.projectEmployeeList = res;
+    },error=>{
+      debugger;
+      alert("Error while fetching projects");
+    })
   }
 
   getAllProjects(){

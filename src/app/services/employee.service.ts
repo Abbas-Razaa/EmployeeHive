@@ -48,9 +48,9 @@ export class EmployeeService {
     return this.http.post<ProjectEmployee>(this.apiURL+"CreateProjectEmployee",obj)
   }
 
-  GetProjectEmployee(id: number) {
-    return this.http.get<Project[]>(
-      this.apiURL+"GetProjectEmployees/"+id)
+  GetProjectEmployee() {
+    return this.http.get<ProjectEmployee[]>(
+      this.apiURL+"GetAllProjectEmployees/")
   }
 
 }

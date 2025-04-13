@@ -57,8 +57,10 @@ export class ProjectEmployee {
   projectId: number;
   empId: number;
   assignedDate: string;
+  projectName?: string;
   isActive: boolean;
   role: string;
+  employeeName?: string;
 
   constructor() {
     this.assignedDate = "";
